@@ -4,5 +4,71 @@
     android:layout_height="match_parent">
 
 
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="59dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Naam"
+            android:id="@+id/textView"
+            android:layout_weight="0.18" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/editText"
+            android:layout_weight="1.71" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Geb. Dat."
+            android:id="@+id/textView2"
+            android:layout_gravity="center_vertical" />
+
+        <DatePicker
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/datePicker"
+            android:calendarViewShown="false"
+            android:spinnersShown="true"
+            android:datePickerMode="spinner" />
+    </LinearLayout>
+
+    <Button
+        android:layout_width="171dp"
+        android:layout_height="wrap_content"
+        android:text="Toevoegen"
+        android:id="@+id/button"
+        android:layout_gravity="center_horizontal" />
 
 </LinearLayout>
+
+
+
+
+    titleET = (EditText) findViewById(R.id.editText1);
+    contentET = (EditText) findViewById(R.id.editText2);
+    submitBT = (ImageButton) findViewById(R.id.imageButton1);
+    submitBT.setOnClickListener(new View.OnClickListener(){
+    public void onClick(View v) {
+    save();
+    }
+    });
+    cancelBT = (ImageButton)findViewById(R.id.imageButton2);
+    cancelBT.setOnClickListener(new View.OnClickListener(){
+    public void onClick(View v) {
+    cancel();
+    }
+    });
