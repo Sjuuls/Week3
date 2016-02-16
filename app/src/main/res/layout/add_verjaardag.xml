@@ -51,7 +51,7 @@
         android:layout_height="wrap_content"
         android:text="Toevoegen"
         android:id="@+id/button"
-        android:onclick="save"
+        android:onClick="save"
         android:layout_gravity="center_horizontal" />
 
 </LinearLayout>

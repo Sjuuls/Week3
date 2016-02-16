@@ -16,6 +16,7 @@ public class MyDBHelper extends SQLiteOpenHelper {
     private static final String dbName = "MyDatabase.db";
     private final String createTableVerjaardagen = "CREATE TABLE VERJAARDAGEN (_ID INTEGER PRIMARY KEY AUTOINCREMENT, NAAM TEXT NOT NULL, MAAND INTEGER NOT NULL, DAG INTEGER NOT NULL)";
     private final String insertDefaultData = "INSERT INTO VERJAARDAGEN(NAAM, DAG, MAAND) VALUES('MARTIJN', 7, 6)";
+
     private MyDBHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
     }
@@ -62,7 +63,7 @@ public class MyDBHelper extends SQLiteOpenHelper {
 
 //        c = db.rawQuery("DELETE FROM VERJAARDAGEN WHERE NAAM='MARTIJN'", null);
 
-        c = db.rawQuery("SELECT ID as _id, NAAM , DAG, MAAND FROM VERJAARDAGEN where MAAND = " + maand + "ORDER BY DAG", null);
+        c = db.rawQuery("SELECT _ID as _id, NAAM , DAG, MAAND FROM VERJAARDAGEN where MAAND = " + maand + " ORDER BY DAG", null);
         return c;
     }
 
@@ -81,6 +82,6 @@ public class MyDBHelper extends SQLiteOpenHelper {
     public void deleteItem(int ID){
         SQLiteDatabase db = getWritableDatabase();
 
-        db.execSQL("delete from VERJAARDAGEN where ID = " + ID);
+        db.execSQL("delete from VERJAARDAGEN where _ID = " + ID);
     }
 }

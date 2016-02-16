@@ -2,6 +2,8 @@ package julien.week3;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 
@@ -23,7 +25,12 @@ public class AddVerjaardag extends Activity{
         etNaam = (EditText) findViewById(R.id.etNaam);
         dpGeboortedatum = (DatePicker) findViewById(R.id.datePicker);
 
-
+        Button b = (Button)findViewById(R.id.button);
+        b.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                save();
+            }
+        });
     }
 
     public void save() {

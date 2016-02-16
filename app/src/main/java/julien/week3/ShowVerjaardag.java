@@ -31,6 +31,8 @@ public class ShowVerjaardag extends Activity {
         tv1.setText(title);
         tv2.setText(content);
         tv3.setText(tijdstip);
+
+
     }
 
     public void deleteItem(){
