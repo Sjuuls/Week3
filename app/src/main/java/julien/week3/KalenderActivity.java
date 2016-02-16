@@ -4,8 +4,10 @@ import android.app.ListActivity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 
 import java.util.Calendar;
@@ -38,17 +40,17 @@ public class KalenderActivity extends ListActivity {
         MyCursor = MyDBHelper.getVerjaardagenPerMaand(iCurMonth);
         adapter = new MyCursorAdapter(this, MyCursor);
         this.setListAdapter(adapter);
-//
-//        LayoutInflater inflater = LayoutInflater.from(this);
-//        View v  = inflater.inflate(R.layout.buttons, null);
-//        lv.addFooterView(v);
-//        Button b = (Button)findViewById(R.id.addbutton);
-//        b.setOnClickListener(new View.OnClickListener() {
-//            public void onClick(View v) {
-//                Intent i = new Intent(KalenderActivity.this, AddVerjaardag.class);
-//                startActivity(i);
-//            }
-//        });
+
+        LayoutInflater inflater = LayoutInflater.from(this);
+        View v  = inflater.inflate(R.layout.buttons, null);
+        lvVerjaardagen.addFooterView(v);
+        Button b = (Button)findViewById(R.id.addbutton);
+        b.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent i = new Intent(KalenderActivity.this, AddVerjaardag.class);
+                startActivity(i);
+            }
+        });
 
     }
 
