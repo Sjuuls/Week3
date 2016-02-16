@@ -77,4 +77,10 @@ public class MyDBHelper extends SQLiteOpenHelper {
         }
         return myInstance;
     }
+
+    public void deleteItem(int ID){
+        SQLiteDatabase db = getWritableDatabase();
+
+        db.execSQL("delete from VERJAARDAGEN where ID = " + ID);
+    }
 }

@@ -14,13 +14,13 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Naam"
-            android:id="@+id/textView"
+            android:id="@+id/tvNaam"
             android:layout_weight="0.18" />
 
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/editText"
+            android:id="@+id/etNaam"
             android:layout_weight="1.71" />
     </LinearLayout>
 
@@ -51,24 +51,10 @@
         android:layout_height="wrap_content"
         android:text="Toevoegen"
         android:id="@+id/button"
+        android:onclick="save"
         android:layout_gravity="center_horizontal" />
 
 </LinearLayout>
 
 
 
-
-    titleET = (EditText) findViewById(R.id.editText1);
-    contentET = (EditText) findViewById(R.id.editText2);
-    submitBT = (ImageButton) findViewById(R.id.imageButton1);
-    submitBT.setOnClickListener(new View.OnClickListener(){
-    public void onClick(View v) {
-    save();
-    }
-    });
-    cancelBT = (ImageButton)findViewById(R.id.imageButton2);
-    cancelBT.setOnClickListener(new View.OnClickListener(){
-    public void onClick(View v) {
-    cancel();
-    }
-    });

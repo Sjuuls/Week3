@@ -10,20 +10,32 @@ import android.widget.TextView;
  */
 public class ShowVerjaardag extends Activity {
 
+    private MyDBHelper dbHelper;
+    private int ID;
+
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.show_verjaardag);
         Intent intent = getIntent();
+
         String title = intent.getStringExtra("naam");
-        TextView tv1 = (TextView)findViewById(R.id.tvNaam);
-        tv1.setText(title);
         String content = intent.getStringExtra("dag");
-        TextView tv2 = (TextView) findViewById(R.id.tvDag);
-        tv2.setText(content);
         String tijdstip = intent.getStringExtra("maand");
+        ID = intent.getIntExtra("ID", -1);
+
+        TextView tv1 = (TextView)findViewById(R.id.tvNaam);
+        TextView tv2 = (TextView) findViewById(R.id.tvDag);
         TextView tv3 = (TextView) findViewById(R.id.tvMaand);
+
+        tv1.setText(title);
+        tv2.setText(content);
         tv3.setText(tijdstip);
     }
 
+    public void deleteItem(){
+        dbHelper = MyDBHelper.getInstance(this);
+
+        dbHelper.deleteItem(ID);
+    }
 }
