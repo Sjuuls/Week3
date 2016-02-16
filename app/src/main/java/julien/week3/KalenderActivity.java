@@ -59,11 +59,13 @@ public class KalenderActivity extends ListActivity {
             String sNaam = MyCursor.getString(MyCursor.getColumnIndex("NAAM"));
             String sDag = MyCursor.getString(MyCursor.getColumnIndex("DAG"));
             String sMaand = MyCursor.getString(MyCursor.getColumnIndex("MAAND"));
+            int ID = MyCursor.getInt(MyCursor.getColumnIndex("_id"));
 
             Intent intent = new Intent(this, ShowVerjaardag.class);
             intent.putExtra("naam", sNaam);
             intent.putExtra("dag", sDag);
             intent.putExtra("maand", sMaand);
+            intent.putExtra("ID", ID);
             startActivity(intent);
         }
     }
