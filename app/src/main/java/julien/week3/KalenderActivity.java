@@ -48,7 +48,7 @@ public class KalenderActivity extends ListActivity {
 
         registerForContextMenu(lvVerjaardagen);
 
-        MyCursor = MyDBHelper.getVerjaardagenPerMaand(iCurMonth);
+        MyCursor = MyDBHelper.getVerjaardagenPerMaand(iSelectedMonth);
         adapter = new MyCursorAdapter(this, MyCursor);
         this.setListAdapter(adapter);
 
@@ -64,7 +64,6 @@ public class KalenderActivity extends ListActivity {
         lvVerjaardagen.addHeaderView(tvTitle);
         gestureListener = new View.OnTouchListener() {
             public boolean onTouch(View v, MotionEvent event) {
-                Log.v("ListViewActivity", "onTouch");
                 return gestureDetector.onTouchEvent(event);
             }
         };
@@ -90,13 +89,11 @@ public class KalenderActivity extends ListActivity {
             public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
                  if (e1.getX() - e2.getX() > LARGE_MOVE) {
                     Log.i("onFling", "left");
-//                            tv.append("\nFling Left with velocity " + velocityX);
                      nextMonth();
                     return true;
 
                 } else if (e2.getX() - e1.getX() > LARGE_MOVE) {
                     Log.i("onFling", "right");
-//                            tv.append("\nFling Right with velocity " + velocityX);
                      previousMonth();
                     return true;
                 }
@@ -158,7 +155,6 @@ public class KalenderActivity extends ListActivity {
     }
 
     private void changeMonth(int month){
-        Log.i("changeMonth", "oud: " + iSelectedMonth + " new: " + month);
         MyCursor.close();
 
         iSelectedMonth = month;
@@ -167,12 +163,6 @@ public class KalenderActivity extends ListActivity {
 
         MyCursor = MyDBHelper.getVerjaardagenPerMaand(iSelectedMonth);
         adapter.changeCursor(MyCursor);
-    }
-
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        Log.i("touchevent", "touchevent");
-        return gestureDetector.onTouchEvent(event);
     }
 
 }
