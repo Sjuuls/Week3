@@ -19,7 +19,7 @@ public class KalenderActivity extends ListActivity implements View.OnTouchListen
     private Cursor MyCursor;
     private MyCursorAdapter adapter;
     private ListView lvVerjaardagen;
-    private final int iCurMonth = Calendar.getInstance().get(Calendar.MONTH);
+    private final int iCurMonth = Calendar.getInstance().get(Calendar.MONTH) + 1;
     private int iSelectedMonth;
     //private GestureDetector detector = new GestureDector(this, ogl);
 
