@@ -88,26 +88,16 @@ public class KalenderActivity extends ListActivity {
 
             @Override
             public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
-                if (e1.getY() - e2.getY() > LARGE_MOVE) {
-                    Log.i("onFling", "up");
-//                            tv.append("\nFling Up with velocity " + velocityY);
-                    return true;
-
-                } else if (e2.getY() - e1.getY() > LARGE_MOVE) {
-                    Log.i("onFling", "down");
-//                            tv.append("\nFling Down with velocity " + velocityY);
-                    return true;
-
-                } else if (e1.getX() - e2.getX() > LARGE_MOVE) {
+                 if (e1.getX() - e2.getX() > LARGE_MOVE) {
                     Log.i("onFling", "left");
 //                            tv.append("\nFling Left with velocity " + velocityX);
-                    previousMonth();
+                     nextMonth();
                     return true;
 
                 } else if (e2.getX() - e1.getX() > LARGE_MOVE) {
                     Log.i("onFling", "right");
 //                            tv.append("\nFling Right with velocity " + velocityX);
-                    nextMonth();
+                     previousMonth();
                     return true;
                 }
 
@@ -160,7 +150,11 @@ public class KalenderActivity extends ListActivity {
     }
 
     private void previousMonth(){
-        changeMonth((iSelectedMonth - 1));
+        if(iSelectedMonth == 1){
+            changeMonth(12);
+        }else{
+            changeMonth((iSelectedMonth - 1));
+        }
     }
 
     private void changeMonth(int month){
