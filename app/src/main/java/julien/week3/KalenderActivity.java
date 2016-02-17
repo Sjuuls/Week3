@@ -4,13 +4,16 @@ import android.app.ListActivity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 
+import java.text.DateFormatSymbols;
 import java.util.Calendar;
 
 public class KalenderActivity extends ListActivity implements View.OnTouchListener {
@@ -21,6 +24,7 @@ public class KalenderActivity extends ListActivity implements View.OnTouchListen
     private ListView lvVerjaardagen;
     private final int iCurMonth = Calendar.getInstance().get(Calendar.MONTH) + 1;
     private int iSelectedMonth;
+    private TextView tvTitle;
     //private GestureDetector detector = new GestureDector(this, ogl);
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +42,6 @@ public class KalenderActivity extends ListActivity implements View.OnTouchListen
             }
         });
 
-
         registerForContextMenu(lvVerjaardagen);
 
         MyCursor = MyDBHelper.getVerjaardagenPerMaand(iCurMonth);
@@ -48,6 +51,12 @@ public class KalenderActivity extends ListActivity implements View.OnTouchListen
         LayoutInflater inflater = LayoutInflater.from(this);
         View v  = inflater.inflate(R.layout.buttons, null);
         lvVerjaardagen.addFooterView(v);
+
+        tvTitle = new TextView(this);
+        tvTitle.setText(getMonth(iSelectedMonth));
+        tvTitle.setGravity(Gravity.CENTER);
+        
+        lvVerjaardagen.addHeaderView(tvTitle);
 
         Button b = (Button)findViewById(R.id.addbutton);
         b.setOnClickListener(new View.OnClickListener() {
@@ -96,5 +105,9 @@ public class KalenderActivity extends ListActivity implements View.OnTouchListen
     @Override
     public boolean onTouch(View v, MotionEvent event) {
         return false;
+    }
+
+    public String getMonth(int month) {
+        return new DateFormatSymbols().getMonths()[month-1];
     }
 }
