@@ -123,7 +123,7 @@ public class KalenderActivity extends ListActivity {
     @Override
     public void onResume(){
         super.onResume();
-        MyCursor = MyDBHelper.getVerjaardagenPerMaand(iCurMonth);
+        MyCursor = MyDBHelper.getVerjaardagenPerMaand(iSelectedMonth);
         adapter.changeCursor(MyCursor);
 
     }
