@@ -10,7 +10,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.RelativeLayout;
 
 import java.util.Calendar;
 
@@ -22,6 +21,7 @@ public class KalenderActivity extends ListActivity implements View.OnTouchListen
     private ListView lvVerjaardagen;
     private final int iCurMonth = Calendar.getInstance().get(Calendar.MONTH);
     private int iSelectedMonth;
+    //private GestureDetector detector = new GestureDector(this, ogl);
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,8 +57,8 @@ public class KalenderActivity extends ListActivity implements View.OnTouchListen
             }
         });
 
-        RelativeLayout view =  (RelativeLayout) findViewById(R.id.Layout);
-        view.setOnTouchListener(this);
+//        RelativeLayout view =  (RelativeLayout) findViewById(R.id.Layout);
+//        view.setOnTouchListener(this);
 
     }
 
