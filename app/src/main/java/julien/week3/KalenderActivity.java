@@ -5,25 +5,29 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 
 import java.util.Calendar;
 
-public class KalenderActivity extends ListActivity {
+public class KalenderActivity extends ListActivity implements View.OnTouchListener {
 
     private MyDBHelper MyDBHelper;
     private Cursor MyCursor;
     private MyCursorAdapter adapter;
     private ListView lvVerjaardagen;
     private final int iCurMonth = Calendar.getInstance().get(Calendar.MONTH);
+    private int iSelectedMonth;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 //        setContentView(R.layout.kalender);
 
+        iSelectedMonth = iCurMonth;
         MyDBHelper = MyDBHelper.getInstance(this);
         lvVerjaardagen = this.getListView();
 
@@ -44,6 +48,7 @@ public class KalenderActivity extends ListActivity {
         LayoutInflater inflater = LayoutInflater.from(this);
         View v  = inflater.inflate(R.layout.buttons, null);
         lvVerjaardagen.addFooterView(v);
+
         Button b = (Button)findViewById(R.id.addbutton);
         b.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -51,6 +56,9 @@ public class KalenderActivity extends ListActivity {
                 startActivity(i);
             }
         });
+
+        RelativeLayout view =  (RelativeLayout) findViewById(R.id.Layout);
+        view.setOnTouchListener(this);
 
     }
 
@@ -85,5 +93,8 @@ public class KalenderActivity extends ListActivity {
     }
 
 
-
+    @Override
+    public boolean onTouch(View v, MotionEvent event) {
+        return false;
+    }
 }

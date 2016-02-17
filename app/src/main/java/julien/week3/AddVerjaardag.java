@@ -36,7 +36,7 @@ public class AddVerjaardag extends Activity{
     public void save() {
 
         String sNaam = etNaam.getText().toString();
-        int iMaand = dpGeboortedatum.getMonth();
+        int iMaand = dpGeboortedatum.getMonth() + 1; //Month begint bij 0
         int iDag = dpGeboortedatum.getDayOfMonth();
 
         dbh.addVerjaardag(sNaam, iDag, iMaand);
